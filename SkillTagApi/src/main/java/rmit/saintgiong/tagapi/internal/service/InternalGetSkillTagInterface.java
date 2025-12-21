@@ -1,6 +1,6 @@
 package rmit.saintgiong.tagapi.internal.service;
 
-import rmit.saintgiong.tagapi.external.dto.SkillTagDto;
+import rmit.saintgiong.tagapi.internal.dto.SkillTagDto;
 
 import java.util.List;
 

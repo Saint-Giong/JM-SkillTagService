@@ -3,7 +3,7 @@ package rmit.saintgiong.tagservice.skilltag.mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
-import rmit.saintgiong.tagapi.external.dto.SkillTagDto;
+import rmit.saintgiong.tagapi.internal.dto.SkillTagDto;
 import rmit.saintgiong.tagapi.internal.dto.CreateSkillTagRequestDto;
 import rmit.saintgiong.tagservice.skilltag.entity.SkillTag;
 

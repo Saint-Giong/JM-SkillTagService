@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import rmit.saintgiong.tagapi.external.dto.SkillTagDto;
+import rmit.saintgiong.tagapi.internal.dto.SkillTagDto;
 import rmit.saintgiong.tagapi.internal.dto.CreateSkillTagRequestDto;
 import rmit.saintgiong.tagapi.internal.dto.common.ApiResponseDto;
 import rmit.saintgiong.tagservice.skilltag.services.CreateSkillTagService;
@@ -28,7 +28,7 @@ public class SkillTagController {
     private final UpdateSkillTagService updateSkillTagService;
     private final DeleteSkillTagService deleteSkillTagService;
 
-    @PostMapping
+    @PostMapping("/create")
     @Operation(summary = "Create a new skill tag", description = "Creates a new skill tag with the provided information")
     public ResponseEntity<ApiResponseDto<SkillTagDto>> createSkillTag(
             @Valid @RequestBody CreateSkillTagRequestDto request) {
@@ -45,7 +45,7 @@ public class SkillTagController {
         return ResponseEntity.ok(ApiResponseDto.success(skillTag));
     }
 
-    @GetMapping
+    @GetMapping("/all")
     @Operation(summary = "Get all skill tags", description = "Retrieves all skill tags in the system")
     public ResponseEntity<ApiResponseDto<List<SkillTagDto>>> getAllSkillTags() {
         List<SkillTagDto> skillTags = getSkillTagService.getAllSkillTags();

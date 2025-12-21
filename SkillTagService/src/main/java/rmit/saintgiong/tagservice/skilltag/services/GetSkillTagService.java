@@ -3,7 +3,7 @@ package rmit.saintgiong.tagservice.skilltag.services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import rmit.saintgiong.tagapi.external.dto.SkillTagDto;
+import rmit.saintgiong.tagapi.internal.dto.SkillTagDto;
 import rmit.saintgiong.tagapi.internal.service.InternalGetSkillTagInterface;
 import rmit.saintgiong.tagservice.skilltag.entity.SkillTag;
 import rmit.saintgiong.tagservice.skilltag.mapper.SkillTagMapper;

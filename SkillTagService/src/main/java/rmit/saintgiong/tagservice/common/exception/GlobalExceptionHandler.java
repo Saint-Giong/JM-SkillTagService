@@ -102,6 +102,41 @@ public class GlobalExceptionHandler {
                 .body(errorResponseDto);
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ErrorResponseDto> handleIllegalArgumentException(
+            IllegalArgumentException exception,
+            WebRequest request
+    ) {
+        log.warn("Illegal argument: {}", exception.getMessage());
+        
+        ErrorResponseDto errorResponseDto = ErrorResponseDto.builder()
+                .apiPath(request.getDescription(false).replace("uri=", ""))
+                .errorCode(HttpStatus.CONFLICT)
+                .message(exception.getMessage())
+                .timeStamp(LocalDateTime.now())
+                .build();
 
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(errorResponseDto);
+    }
 
+    @ExceptionHandler(SkillTagAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponseDto> handleSkillTagAlreadyExistsException(
+            SkillTagAlreadyExistsException exception,
+            WebRequest request
+    ) {
+        log.warn("Skill tag already exists: {}", exception.getMessage());
+        
+        ErrorResponseDto errorResponseDto = ErrorResponseDto.builder()
+                .apiPath(request.getDescription(false).replace("uri=", ""))
+                .errorCode(HttpStatus.CONFLICT)
+                .message(exception.getMessage())
+                .timeStamp(LocalDateTime.now())
+                .build();
+
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(errorResponseDto);
+    }
 }

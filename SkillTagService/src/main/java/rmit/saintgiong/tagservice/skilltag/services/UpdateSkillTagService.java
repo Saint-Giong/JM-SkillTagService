@@ -3,9 +3,10 @@ package rmit.saintgiong.tagservice.skilltag.services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import rmit.saintgiong.tagapi.external.dto.SkillTagDto;
+import rmit.saintgiong.tagapi.internal.dto.SkillTagDto;
 import rmit.saintgiong.tagapi.internal.dto.CreateSkillTagRequestDto;
 import rmit.saintgiong.tagapi.internal.service.InternalUpdateSkillTagInterface;
+import rmit.saintgiong.tagservice.common.exception.SkillTagAlreadyExistsException;
 import rmit.saintgiong.tagservice.skilltag.entity.SkillTag;
 import rmit.saintgiong.tagservice.skilltag.mapper.SkillTagMapper;
 import rmit.saintgiong.tagservice.skilltag.repository.SkillTagRepository;
@@ -24,15 +25,16 @@ public class UpdateSkillTagService implements InternalUpdateSkillTagInterface {
                 .orElseThrow(() -> new IllegalArgumentException("Skill tag not found with id: " + id));
 
         String upperCaseName = request.getName().toUpperCase();
-
         // Check if new name already exists for another skill tag (case-insensitive)
         skillTagRepository.findByNameIgnoreCase(upperCaseName)
-                .ifPresent(tag -> {
-                    if (!tag.getId().equals(id)) {
-                        throw new IllegalArgumentException("Skill tag with name '" + request.getName() + "' already exists");
-                    }
+                .ifPresent(existingTag -> {
+                    SkillTagDto existingTagDto = skillTagMapper.toDto(existingTag);
+                    throw new SkillTagAlreadyExistsException(
+                            String.format("Skill tag with name '%s' already exists. Existing tag: [id=%d, name=%s]",
+                                    request.getName(), existingTag.getId(), existingTag.getName()),
+                            existingTagDto
+                    );
                 });
-
         existingSkillTag.setName(upperCaseName);
         SkillTag updatedSkillTag = skillTagRepository.save(existingSkillTag);
         return skillTagMapper.toDto(updatedSkillTag);
