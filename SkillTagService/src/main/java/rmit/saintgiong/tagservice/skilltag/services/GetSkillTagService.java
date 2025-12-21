@@ -3,7 +3,7 @@ package rmit.saintgiong.tagservice.skilltag.services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import rmit.saintgiong.tagapi.internal.dto.SkillTagDto;
+import rmit.saintgiong.tagapi.internal.dto.SkillTagResponseDto;
 import rmit.saintgiong.tagapi.internal.service.InternalGetSkillTagInterface;
 import rmit.saintgiong.tagservice.skilltag.entity.SkillTag;
 import rmit.saintgiong.tagservice.skilltag.mapper.SkillTagMapper;
@@ -20,14 +20,14 @@ public class GetSkillTagService implements InternalGetSkillTagInterface {
     private final SkillTagMapper skillTagMapper;
 
     @Override
-    public SkillTagDto getSkillTagById(Long id) {
+    public SkillTagResponseDto getSkillTagById(Long id) {
         SkillTag skillTag = skillTagRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Skill tag not found with id: " + id));
         return skillTagMapper.toDto(skillTag);
     }
 
     @Override
-    public List<SkillTagDto> getAllSkillTags() {
+    public List<SkillTagResponseDto> getAllSkillTags() {
         List<SkillTag> skillTags = skillTagRepository.findAll();
         return skillTagMapper.toDtoList(skillTags);
     }

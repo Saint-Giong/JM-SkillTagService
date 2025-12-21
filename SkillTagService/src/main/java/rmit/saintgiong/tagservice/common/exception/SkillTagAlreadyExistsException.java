@@ -1,14 +1,14 @@
 package rmit.saintgiong.tagservice.common.exception;
 
 import lombok.Getter;
-import rmit.saintgiong.tagapi.internal.dto.SkillTagDto;
+import rmit.saintgiong.tagapi.internal.dto.SkillTagResponseDto;
 
 @Getter
 public class SkillTagAlreadyExistsException extends RuntimeException {
 
-    private final SkillTagDto existingSkillTag;
+    private final SkillTagResponseDto existingSkillTag;
 
-    public SkillTagAlreadyExistsException(String message, SkillTagDto existingSkillTag) {
+    public SkillTagAlreadyExistsException(String message, SkillTagResponseDto existingSkillTag) {
         super(message);
         this.existingSkillTag = existingSkillTag;
     }

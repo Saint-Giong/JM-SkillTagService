@@ -3,8 +3,8 @@ package rmit.saintgiong.tagservice.skilltag.services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import rmit.saintgiong.tagapi.internal.dto.SkillTagDto;
-import rmit.saintgiong.tagapi.internal.dto.CreateSkillTagRequestDto;
+import rmit.saintgiong.tagapi.internal.dto.SkillTagRequestDto;
+import rmit.saintgiong.tagapi.internal.dto.SkillTagResponseDto;
 import rmit.saintgiong.tagapi.internal.service.InternalUpdateSkillTagInterface;
 import rmit.saintgiong.tagservice.common.exception.SkillTagAlreadyExistsException;
 import rmit.saintgiong.tagservice.skilltag.entity.SkillTag;
@@ -20,7 +20,7 @@ public class UpdateSkillTagService implements InternalUpdateSkillTagInterface {
     private final SkillTagMapper skillTagMapper;
 
     @Override
-    public SkillTagDto updateSkillTag(Long id, CreateSkillTagRequestDto request) {
+    public SkillTagResponseDto updateSkillTag(Long id, SkillTagRequestDto request) {
         SkillTag existingSkillTag = skillTagRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Skill tag not found with id: " + id));
 
@@ -28,7 +28,7 @@ public class UpdateSkillTagService implements InternalUpdateSkillTagInterface {
         // Check if new name already exists for another skill tag (case-insensitive)
         skillTagRepository.findByNameIgnoreCase(upperCaseName)
                 .ifPresent(existingTag -> {
-                    SkillTagDto existingTagDto = skillTagMapper.toDto(existingTag);
+                    SkillTagResponseDto existingTagDto = skillTagMapper.toDto(existingTag);
                     throw new SkillTagAlreadyExistsException(
                             String.format("Skill tag with name '%s' already exists. Existing tag: [id=%d, name=%s]",
                                     request.getName(), existingTag.getId(), existingTag.getName()),

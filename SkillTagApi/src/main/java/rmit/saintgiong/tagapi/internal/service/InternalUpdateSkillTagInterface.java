@@ -1,9 +1,9 @@
 package rmit.saintgiong.tagapi.internal.service;
 
-import rmit.saintgiong.tagapi.internal.dto.SkillTagDto;
-import rmit.saintgiong.tagapi.internal.dto.CreateSkillTagRequestDto;
+import rmit.saintgiong.tagapi.internal.dto.SkillTagResponseDto;
+import rmit.saintgiong.tagapi.internal.dto.SkillTagRequestDto;
 
 public interface InternalUpdateSkillTagInterface {
 
-    SkillTagDto updateSkillTag(Long id, CreateSkillTagRequestDto request);
+    SkillTagResponseDto updateSkillTag(Long id, SkillTagRequestDto request);
 }

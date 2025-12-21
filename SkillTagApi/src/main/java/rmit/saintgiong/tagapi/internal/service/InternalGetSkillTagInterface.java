@@ -1,12 +1,12 @@
 package rmit.saintgiong.tagapi.internal.service;
 
-import rmit.saintgiong.tagapi.internal.dto.SkillTagDto;
+import rmit.saintgiong.tagapi.internal.dto.SkillTagResponseDto;
 
 import java.util.List;
 
 public interface InternalGetSkillTagInterface {
 
-    SkillTagDto getSkillTagById(Long id);
+    SkillTagResponseDto getSkillTagById(Long id);
 
-    List<SkillTagDto> getAllSkillTags();
+    List<SkillTagResponseDto> getAllSkillTags();
 }

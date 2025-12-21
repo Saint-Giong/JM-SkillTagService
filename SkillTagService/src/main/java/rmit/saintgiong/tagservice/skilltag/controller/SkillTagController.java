@@ -8,8 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import rmit.saintgiong.tagapi.internal.dto.SkillTagDto;
-import rmit.saintgiong.tagapi.internal.dto.CreateSkillTagRequestDto;
+import rmit.saintgiong.tagapi.internal.dto.SkillTagRequestDto;
+import rmit.saintgiong.tagapi.internal.dto.SkillTagResponseDto;
 import rmit.saintgiong.tagapi.internal.dto.common.ApiResponseDto;
 import rmit.saintgiong.tagservice.skilltag.services.CreateSkillTagService;
 import rmit.saintgiong.tagservice.skilltag.services.DeleteSkillTagService;
@@ -30,34 +30,34 @@ public class SkillTagController {
 
     @PostMapping("/create")
     @Operation(summary = "Create a new skill tag", description = "Creates a new skill tag with the provided information")
-    public ResponseEntity<ApiResponseDto<SkillTagDto>> createSkillTag(
-            @Valid @RequestBody CreateSkillTagRequestDto request) {
-        SkillTagDto createdTag = createSkillTagService.createSkillTag(request);
+    public ResponseEntity<ApiResponseDto<SkillTagResponseDto>> createSkillTag(
+            @Valid @RequestBody SkillTagRequestDto request) {
+        SkillTagResponseDto createdTag = createSkillTagService.createSkillTag(request);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(ApiResponseDto.success(createdTag, "Skill tag created successfully"));
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Get skill tag by ID", description = "Retrieves a skill tag by its unique identifier")
-    public ResponseEntity<ApiResponseDto<SkillTagDto>> getSkillTagById(
+    public ResponseEntity<ApiResponseDto<SkillTagResponseDto>> getSkillTagById(
             @Parameter(description = "Skill tag ID") @PathVariable Long id) {
-        SkillTagDto skillTag = getSkillTagService.getSkillTagById(id);
+        SkillTagResponseDto skillTag = getSkillTagService.getSkillTagById(id);
         return ResponseEntity.ok(ApiResponseDto.success(skillTag));
     }
 
     @GetMapping("/all")
     @Operation(summary = "Get all skill tags", description = "Retrieves all skill tags in the system")
-    public ResponseEntity<ApiResponseDto<List<SkillTagDto>>> getAllSkillTags() {
-        List<SkillTagDto> skillTags = getSkillTagService.getAllSkillTags();
+    public ResponseEntity<ApiResponseDto<List<SkillTagResponseDto>>> getAllSkillTags() {
+        List<SkillTagResponseDto> skillTags = getSkillTagService.getAllSkillTags();
         return ResponseEntity.ok(ApiResponseDto.success(skillTags));
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "Update a skill tag", description = "Updates an existing skill tag with the provided information")
-    public ResponseEntity<ApiResponseDto<SkillTagDto>> updateSkillTag(
+    public ResponseEntity<ApiResponseDto<SkillTagResponseDto>> updateSkillTag(
             @Parameter(description = "Skill tag ID") @PathVariable Long id,
-            @Valid @RequestBody CreateSkillTagRequestDto request) {
-        SkillTagDto updatedTag = updateSkillTagService.updateSkillTag(id, request);
+            @Valid @RequestBody SkillTagRequestDto request) {
+        SkillTagResponseDto updatedTag = updateSkillTagService.updateSkillTag(id, request);
         return ResponseEntity.ok(ApiResponseDto.success(updatedTag, "Skill tag updated successfully"));
     }
 
