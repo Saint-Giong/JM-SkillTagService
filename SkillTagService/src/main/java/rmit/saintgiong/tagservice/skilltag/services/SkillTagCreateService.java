@@ -21,7 +21,7 @@ public class SkillTagCreateService implements InternalCreateSkillTagInterface {
     @Override
     public SkillTagResponseDto createSkillTag(SkillTagRequestDto request) {
         String upperCaseName = request.getName().toUpperCase().trim();
-        skillTagRepository.findByNameIgnoreCase(upperCaseName)
+        skillTagRepository.findByName(upperCaseName)
                 .ifPresent(existingTag -> {
                     SkillTagResponseDto existingTagDto = skillTagMapper.toDto(existingTag);
                     throw new SkillTagAlreadyExistsException(

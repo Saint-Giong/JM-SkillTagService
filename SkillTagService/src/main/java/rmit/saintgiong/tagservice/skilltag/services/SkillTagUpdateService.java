@@ -25,7 +25,7 @@ public class SkillTagUpdateService implements InternalUpdateSkillTagInterface {
 
         String upperCaseName = request.getName().toUpperCase().trim();
         // Check if new name already exists for another skill tag (case-insensitive)
-        skillTagRepository.findByNameIgnoreCase(upperCaseName)
+        skillTagRepository.findByName(upperCaseName)
                 .ifPresent(existingTag -> {
                     if (!existingTag.getId().equals(id)){
                         SkillTagResponseDto existingTagDto = skillTagMapper.toDto(existingTag);

@@ -36,7 +36,7 @@ class SkillTagUpdateServiceTest {
         SkillTag entity = SkillTag.builder().id(1L).name("JAVA").build();
         SkillTagResponseDto dto = new SkillTagResponseDto(1L, "JAVA");
         when(skillTagRepository.findById(1L)).thenReturn(Optional.of(entity));
-        when(skillTagRepository.findByNameIgnoreCase("JAVA")).thenReturn(Optional.empty());
+        when(skillTagRepository.findByName("JAVA")).thenReturn(Optional.empty());
         when(skillTagRepository.save(any(SkillTag.class))).thenReturn(entity);
         when(skillTagMapper.toDto(entity)).thenReturn(dto);
         SkillTagResponseDto result = skillTagUpdateService.updateSkillTag(1L, request);
@@ -56,7 +56,7 @@ class SkillTagUpdateServiceTest {
         SkillTag entity = SkillTag.builder().id(1L).name("JAVA").build();
         SkillTag other = SkillTag.builder().id(2L).name("JAVA").build();
         when(skillTagRepository.findById(1L)).thenReturn(Optional.of(entity));
-        when(skillTagRepository.findByNameIgnoreCase("JAVA")).thenReturn(Optional.of(other));
+        when(skillTagRepository.findByName("JAVA")).thenReturn(Optional.of(other));
         assertThrows(SkillTagAlreadyExistsException.class, () -> skillTagUpdateService.updateSkillTag(1L, request));
     }
 }

@@ -12,9 +12,9 @@ import java.util.Optional;
 @Repository
 interface SkillTagRepository extends JpaRepository<SkillTag, Long> {
 
-    Optional<SkillTag> findByNameIgnoreCase(String name);
 
     Page<SkillTag> findAll(Pageable pageable);
 
     List<SkillTag> findByNameContainingIgnoreCase(String keyword);
+    Optional<SkillTag> findByName(String name);
 }

@@ -35,7 +35,7 @@ class SkillTagCreateServiceTest {
         SkillTagRequestDto request = new SkillTagRequestDto("JAVA");
         SkillTag entity = SkillTag.builder().id(1L).name("JAVA").build();
         SkillTagResponseDto dto = new SkillTagResponseDto(1L, "JAVA");
-        when(skillTagRepository.findByNameIgnoreCase("JAVA")).thenReturn(Optional.empty());
+        when(skillTagRepository.findByName("JAVA")).thenReturn(Optional.empty());
         when(skillTagMapper.toEntity(request)).thenReturn(entity);
         when(skillTagRepository.save(any(SkillTag.class))).thenReturn(entity);
         when(skillTagMapper.toDto(entity)).thenReturn(dto);
@@ -47,7 +47,7 @@ class SkillTagCreateServiceTest {
     void createSkillTag_duplicate() {
         SkillTagRequestDto request = new SkillTagRequestDto("JAVA");
         SkillTag entity = SkillTag.builder().id(1L).name("JAVA").build();
-        when(skillTagRepository.findByNameIgnoreCase("JAVA")).thenReturn(Optional.of(entity));
+        when(skillTagRepository.findByName("JAVA")).thenReturn(Optional.of(entity));
         assertThrows(SkillTagAlreadyExistsException.class, () -> skillTagCreateService.createSkillTag(request));
     }
 }
