@@ -1,5 +1,7 @@
 package rmit.saintgiong.tagapi.internal.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import rmit.saintgiong.tagapi.internal.dto.SkillTagResponseDto;
 
 import java.util.List;
@@ -7,6 +9,6 @@ import java.util.List;
 public interface InternalGetSkillTagInterface {
 
     SkillTagResponseDto getSkillTagById(Long id);
-
-    List<SkillTagResponseDto> getAllSkillTags();
+    Page<SkillTagResponseDto> getAllSkillTags(Pageable pageable);
+    List<SkillTagResponseDto> autocompleteSkillTags(String prefix);
 }

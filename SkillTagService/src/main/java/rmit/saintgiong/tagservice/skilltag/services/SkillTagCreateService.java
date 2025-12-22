@@ -14,14 +14,14 @@ import rmit.saintgiong.tagservice.skilltag.repository.SkillTagRepository;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class CreateSkillTagService implements InternalCreateSkillTagInterface {
+public class SkillTagCreateService implements InternalCreateSkillTagInterface {
 
     private final SkillTagRepository skillTagRepository;
     private final SkillTagMapper skillTagMapper;
 
     @Override
     public SkillTagResponseDto createSkillTag(SkillTagRequestDto request) {
-        String upperCaseName = request.getName().toUpperCase();
+        String upperCaseName = request.getName().toUpperCase().trim();
         skillTagRepository.findByNameIgnoreCase(upperCaseName)
                 .ifPresent(existingTag -> {
                     SkillTagResponseDto existingTagDto = skillTagMapper.toDto(existingTag);

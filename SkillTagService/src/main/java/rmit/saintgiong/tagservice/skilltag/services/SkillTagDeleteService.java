@@ -9,7 +9,7 @@ import rmit.saintgiong.tagservice.skilltag.repository.SkillTagRepository;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class DeleteSkillTagService implements InternalDeleteSkillTagInterface {
+public class SkillTagDeleteService implements InternalDeleteSkillTagInterface {
 
     private final SkillTagRepository skillTagRepository;
 

@@ -14,7 +14,7 @@ import rmit.saintgiong.tagservice.skilltag.repository.SkillTagRepository;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class UpdateSkillTagService implements InternalUpdateSkillTagInterface {
+public class SkillTagUpdateService implements InternalUpdateSkillTagInterface {
 
     private final SkillTagRepository skillTagRepository;
     private final SkillTagMapper skillTagMapper;
@@ -24,16 +24,18 @@ public class UpdateSkillTagService implements InternalUpdateSkillTagInterface {
         SkillTag existingSkillTag = skillTagRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Skill tag not found with id: " + id));
 
-        String upperCaseName = request.getName().toUpperCase();
+        String upperCaseName = request.getName().toUpperCase().trim();
         // Check if new name already exists for another skill tag (case-insensitive)
         skillTagRepository.findByNameIgnoreCase(upperCaseName)
                 .ifPresent(existingTag -> {
-                    SkillTagResponseDto existingTagDto = skillTagMapper.toDto(existingTag);
-                    throw new SkillTagAlreadyExistsException(
-                            String.format("Skill tag with name '%s' already exists. Existing tag: [id=%d, name=%s]",
-                                    request.getName(), existingTag.getId(), existingTag.getName()),
-                            existingTagDto
-                    );
+                    if (!existingTag.getId().equals(id)){
+                        SkillTagResponseDto existingTagDto = skillTagMapper.toDto(existingTag);
+                        throw new SkillTagAlreadyExistsException(
+                                String.format("Skill tag with name '%s' already exists. Existing tag: [id=%d, name=%s]",
+                                        request.getName(), existingTag.getId(), existingTag.getName()),
+                                existingTagDto
+                        );
+                    }
                 });
         existingSkillTag.setName(upperCaseName);
         SkillTag updatedSkillTag = skillTagRepository.save(existingSkillTag);

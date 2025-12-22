@@ -1,6 +1,8 @@
 package rmit.saintgiong.tagservice.skilltag.services;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import rmit.saintgiong.tagapi.internal.dto.SkillTagResponseDto;
@@ -10,11 +12,12 @@ import rmit.saintgiong.tagservice.skilltag.mapper.SkillTagMapper;
 import rmit.saintgiong.tagservice.skilltag.repository.SkillTagRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class GetSkillTagService implements InternalGetSkillTagInterface {
+public class SkillTagGetService implements InternalGetSkillTagInterface {
 
     private final SkillTagRepository skillTagRepository;
     private final SkillTagMapper skillTagMapper;
@@ -25,10 +28,17 @@ public class GetSkillTagService implements InternalGetSkillTagInterface {
                 .orElseThrow(() -> new IllegalArgumentException("Skill tag not found with id: " + id));
         return skillTagMapper.toDto(skillTag);
     }
+    @Override
+    public Page<SkillTagResponseDto> getAllSkillTags(Pageable pageable) {
+        return skillTagRepository.findAll(pageable)
+                .map(skillTagMapper::toDto);
+    }
 
     @Override
-    public List<SkillTagResponseDto> getAllSkillTags() {
-        List<SkillTag> skillTags = skillTagRepository.findAll();
-        return skillTagMapper.toDtoList(skillTags);
+    public List<SkillTagResponseDto> autocompleteSkillTags(String keyword) {
+        return skillTagRepository.findByNameContainingIgnoreCase(keyword)
+                .stream()
+                .map(skillTagMapper::toDto)
+                .collect(Collectors.toList());
     }
 }
