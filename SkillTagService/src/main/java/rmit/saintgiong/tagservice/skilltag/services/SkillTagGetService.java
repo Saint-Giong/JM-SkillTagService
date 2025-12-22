@@ -9,7 +9,6 @@ import rmit.saintgiong.tagapi.internal.dto.SkillTagResponseDto;
 import rmit.saintgiong.tagapi.internal.service.InternalGetSkillTagInterface;
 import rmit.saintgiong.tagservice.skilltag.entity.SkillTag;
 import rmit.saintgiong.tagservice.skilltag.mapper.SkillTagMapper;
-import rmit.saintgiong.tagservice.skilltag.repository.SkillTagRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;

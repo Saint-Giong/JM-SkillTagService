@@ -9,7 +9,6 @@ import rmit.saintgiong.tagapi.internal.service.InternalCreateSkillTagInterface;
 import rmit.saintgiong.tagservice.common.exception.SkillTagAlreadyExistsException;
 import rmit.saintgiong.tagservice.skilltag.entity.SkillTag;
 import rmit.saintgiong.tagservice.skilltag.mapper.SkillTagMapper;
-import rmit.saintgiong.tagservice.skilltag.repository.SkillTagRepository;
 
 @Service
 @RequiredArgsConstructor

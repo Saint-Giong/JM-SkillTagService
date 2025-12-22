@@ -1,11 +1,10 @@
-package rmit.saintgiong.tagservice.common.config;
+package rmit.saintgiong.tagservice.skilltag.services;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import rmit.saintgiong.tagservice.skilltag.entity.SkillTag;
-import rmit.saintgiong.tagservice.skilltag.repository.SkillTagRepository;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +12,7 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class DataInitializer implements CommandLineRunner {
+public class SkillTagDataInitializerService implements CommandLineRunner {
 
     private final SkillTagRepository skillTagRepository;
 
