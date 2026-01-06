@@ -5,11 +5,12 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import rmit.saintgiong.tagapi.internal.dto.SkillTagRequestDto;
-import rmit.saintgiong.tagapi.internal.dto.SkillTagResponseDto;
-import rmit.saintgiong.tagservice.common.exception.SkillTagAlreadyExistsException;
+import rmit.saintgiong.tagapi.internal.common.dto.SkillTagRequestDto;
+import rmit.saintgiong.tagapi.internal.common.dto.SkillTagResponseDto;
+import rmit.saintgiong.tagservice.common.exception.resources.SkillTagAlreadyExistsException;
 import rmit.saintgiong.tagservice.domain.entity.SkillTag;
 import rmit.saintgiong.tagservice.domain.mapper.SkillTagMapper;
+import rmit.saintgiong.tagservice.domain.repository.SkillTagRepository;
 
 import java.util.Optional;
 

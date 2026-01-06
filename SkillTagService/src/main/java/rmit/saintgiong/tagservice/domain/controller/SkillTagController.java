@@ -11,9 +11,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import rmit.saintgiong.tagapi.internal.dto.SkillTagRequestDto;
-import rmit.saintgiong.tagapi.internal.dto.SkillTagResponseDto;
-import rmit.saintgiong.tagapi.internal.dto.common.ApiResponseDto;
+import rmit.saintgiong.tagapi.internal.common.dto.SkillTagRequestDto;
+import rmit.saintgiong.tagapi.internal.common.dto.SkillTagResponseDto;
+import rmit.saintgiong.tagapi.internal.common.dto.api.ApiResponseDto;
 import rmit.saintgiong.tagapi.internal.service.InternalCreateSkillTagInterface;
 import rmit.saintgiong.tagapi.internal.service.InternalDeleteSkillTagInterface;
 import rmit.saintgiong.tagapi.internal.service.InternalGetSkillTagInterface;
@@ -48,7 +48,7 @@ public class SkillTagController {
         return ResponseEntity.ok(ApiResponseDto.success(skillTag));
     }
 
-    @GetMapping("/all")
+    @GetMapping("/")
     @Operation(summary = "Get all skill tags", description = "Retrieves all skill tags in the system with pagination")
     public ResponseEntity<ApiResponseDto<Page<SkillTagResponseDto>>> getAllSkillTags(
             @RequestParam(defaultValue = "0") int page,

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import rmit.saintgiong.tagapi.internal.service.InternalDeleteSkillTagInterface;
+import rmit.saintgiong.tagservice.domain.repository.SkillTagRepository;
 
 @Service
 @RequiredArgsConstructor

@@ -1,4 +1,4 @@
-package rmit.saintgiong.tagapi.internal.dto.common;
+package rmit.saintgiong.tagapi.internal.common.dto.api;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
