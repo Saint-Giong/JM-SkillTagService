@@ -1,4 +1,4 @@
-package rmit.saintgiong.tagservice.skilltag.services;
+package rmit.saintgiong.tagservice.domain.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -7,8 +7,8 @@ import rmit.saintgiong.tagapi.internal.dto.SkillTagResponseDto;
 import rmit.saintgiong.tagapi.internal.dto.SkillTagRequestDto;
 import rmit.saintgiong.tagapi.internal.service.InternalCreateSkillTagInterface;
 import rmit.saintgiong.tagservice.common.exception.SkillTagAlreadyExistsException;
-import rmit.saintgiong.tagservice.skilltag.entity.SkillTag;
-import rmit.saintgiong.tagservice.skilltag.mapper.SkillTagMapper;
+import rmit.saintgiong.tagservice.domain.entity.SkillTag;
+import rmit.saintgiong.tagservice.domain.mapper.SkillTagMapper;
 
 @Service
 @RequiredArgsConstructor

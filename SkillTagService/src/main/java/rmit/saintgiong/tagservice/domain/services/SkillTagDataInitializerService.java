@@ -1,10 +1,10 @@
-package rmit.saintgiong.tagservice.skilltag.services;
+package rmit.saintgiong.tagservice.domain.services;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import rmit.saintgiong.tagservice.skilltag.entity.SkillTag;
+import rmit.saintgiong.tagservice.domain.entity.SkillTag;
 
 import java.util.Arrays;
 import java.util.List;

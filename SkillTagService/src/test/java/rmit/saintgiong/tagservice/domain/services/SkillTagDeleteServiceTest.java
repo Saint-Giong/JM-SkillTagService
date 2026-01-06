@@ -1,4 +1,4 @@
-package rmit.saintgiong.tagservice.skilltag.services;
+package rmit.saintgiong.tagservice.domain.services;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

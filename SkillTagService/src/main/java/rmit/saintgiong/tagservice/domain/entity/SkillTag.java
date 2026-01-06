@@ -1,4 +1,4 @@
-package rmit.saintgiong.tagservice.skilltag.entity;
+package rmit.saintgiong.tagservice.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,4 +1,4 @@
-package rmit.saintgiong.tagservice.skilltag.services;
+package rmit.saintgiong.tagservice.domain.services;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,8 +10,8 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import rmit.saintgiong.tagapi.internal.dto.SkillTagResponseDto;
-import rmit.saintgiong.tagservice.skilltag.entity.SkillTag;
-import rmit.saintgiong.tagservice.skilltag.mapper.SkillTagMapper;
+import rmit.saintgiong.tagservice.domain.entity.SkillTag;
+import rmit.saintgiong.tagservice.domain.mapper.SkillTagMapper;
 
 import java.util.Arrays;
 import java.util.Collections;

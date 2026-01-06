@@ -1,4 +1,4 @@
-package rmit.saintgiong.tagservice.skilltag.services;
+package rmit.saintgiong.tagservice.domain.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import rmit.saintgiong.tagapi.internal.dto.SkillTagResponseDto;
 import rmit.saintgiong.tagapi.internal.service.InternalGetSkillTagInterface;
-import rmit.saintgiong.tagservice.skilltag.entity.SkillTag;
-import rmit.saintgiong.tagservice.skilltag.mapper.SkillTagMapper;
+import rmit.saintgiong.tagservice.domain.entity.SkillTag;
+import rmit.saintgiong.tagservice.domain.mapper.SkillTagMapper;
 
 import java.util.List;
 import java.util.stream.Collectors;

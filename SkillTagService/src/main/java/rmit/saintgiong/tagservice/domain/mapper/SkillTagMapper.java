@@ -1,11 +1,11 @@
-package rmit.saintgiong.tagservice.skilltag.mapper;
+package rmit.saintgiong.tagservice.domain.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import rmit.saintgiong.tagapi.internal.dto.SkillTagResponseDto;
 import rmit.saintgiong.tagapi.internal.dto.SkillTagRequestDto;
-import rmit.saintgiong.tagservice.skilltag.entity.SkillTag;
+import rmit.saintgiong.tagservice.domain.entity.SkillTag;
 
 import java.util.List;
 

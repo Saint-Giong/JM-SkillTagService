@@ -50,7 +50,7 @@ WORKDIR /app
 COPY --from=builder /app/SkillTagService/target/*.jar app.jar
 
 # Expose the default Spring Boot port (you can override in compose)
-EXPOSE 8183
+EXPOSE 8185
 
 # Run the application
 ENTRYPOINT ["java","-jar","/app/app.jar"]

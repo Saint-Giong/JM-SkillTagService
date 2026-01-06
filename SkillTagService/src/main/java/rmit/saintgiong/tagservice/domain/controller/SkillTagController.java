@@ -1,4 +1,4 @@
-package rmit.saintgiong.tagservice.skilltag.controller;
+package rmit.saintgiong.tagservice.domain.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
