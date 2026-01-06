@@ -1,4 +1,4 @@
-package rmit.saintgiong.tagapi.internal.dto;
+package rmit.saintgiong.tagapi.internal.common.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

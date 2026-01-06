@@ -1,10 +1,12 @@
-package rmit.saintgiong.tagservice.domain.services;
+package rmit.saintgiong.tagservice.common.config;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.jspecify.annotations.NonNull;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import rmit.saintgiong.tagservice.domain.entity.SkillTag;
+import rmit.saintgiong.tagservice.domain.repository.SkillTagRepository;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +14,7 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class SkillTagDataInitializerService implements CommandLineRunner {
+public class DataSeedingConfig implements CommandLineRunner {
 
     private final SkillTagRepository skillTagRepository;
 
@@ -40,7 +42,7 @@ public class SkillTagDataInitializerService implements CommandLineRunner {
     );
 
     @Override
-    public void run(String... args) {
+    public void run(String @NonNull ... args) {
         if (skillTagRepository.count() == 0) {
             log.info("No skill tags found in database. Populating default skill tags...");
             

@@ -1,4 +1,4 @@
-package rmit.saintgiong.tagapi.internal.dto;
+package rmit.saintgiong.tagapi.internal.common.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
